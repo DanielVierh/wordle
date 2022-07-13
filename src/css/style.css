@@ -17,8 +17,8 @@ body {
 }
 
 .usededChars {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border: 1px solid black;
     border-radius: 5px;
     margin: 5px;
@@ -54,4 +54,20 @@ body {
     margin: 2px;
     background: radial-gradient(rgba(240, 239, 239, 0.849), rgba(0, 0, 0, 0.61));
     cursor: pointer;
+}
+
+.roundButton {
+    visibility: hidden;
+    background-color: green;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: -10px auto;
 }
