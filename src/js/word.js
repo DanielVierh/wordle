@@ -1913,7 +1913,6 @@ const words = ["AABEL",
 "Elmpt",
 "Eloge",
 "Elric",
-"Elsaß",
 "Elsau",
 "Elsie",
 "Elsig",
@@ -9057,4 +9056,3 @@ const words = ["AABEL",
 "zymös",
 "Zyrus",
 "Zyste"]
-
