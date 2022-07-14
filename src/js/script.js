@@ -15,7 +15,7 @@ let needToCheck = false;
 // let word4 = [];
 // let word5 = [];
 
-const checkbutton = document.getElementById("btnSend");
+const checkbutton = document.getElementById('btnSend');
 
 window.onload = init();
 
@@ -43,13 +43,13 @@ function logButton(clicked_ID) {
             wroteChars--;
             const str2 = currentWord.substring(0, currentWord.length - 1);
             currentWord = str2;
-            document.getElementById("char_" + (wroteChars + 1)).innerHTML = '';
+            document.getElementById('char_' + (wroteChars + 1)).innerHTML = '';
             console.log(currentWord);
             console.log(`DELETEEE. Chars: ${wroteChars}`);
         }
     } else {
         if (needToCheck === false) {
-            document.getElementById("char_" + (wroteChars + 1)).innerHTML = chr;
+            document.getElementById('char_' + (wroteChars + 1)).innerHTML = chr;
             currentWord = currentWord += chr;
             wroteChars++;
             console.log(`Chars: ${wroteChars} -- ${currentWord}`);
@@ -66,30 +66,33 @@ function checkWordLength() {
     }
 }
 
-
-
-
-
 // Checke Wort
-checkbutton.addEventListener("click", () => {
-    for(let i = 0; i <= 4; i++) {
-       // Richtiger Buchstabe an gleicher Stelle?
-        if(currentWord[i] === searchedWord[i]) {
+checkbutton.addEventListener('click', () => {
+
+    // Prüfe, ob Wort in Words Array existiert
+    for(let i = 0; i < words.length; i++) {
+        const comparedWord = words[i].toUpperCase();
+        if(comparedWord === currentWord) {
+            console.log('Wort existiert');
+            if(searchedWord.toUpperCase() === currentWord) {
+                console.log('Gewonnen');
+            }
+        }
+    }
+
+
+    for (let i = 0; i <= 4; i++) {
+        // Richtiger Buchstabe an gleicher Stelle?
+        if (currentWord[i] === searchedWord[i]) {
             console.log('Bingo');
             // Buchstaben grün färben
             // Buchstabe bei Wort grün färben
-        }else {
-            if(searchedWord.includes(currentWord[i])) {
+        } else {
+            if (searchedWord.includes(currentWord[i])) {
                 console.log('Vorhanden');
-            // Buchstaben grün färben
-            // Buchstabe bei Wort orange färben
-
+                // Buchstaben grün färben
+                // Buchstabe bei Wort orange färben
             }
         }
-
-
-
     }
-})
-
-
+});
