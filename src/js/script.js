@@ -10,6 +10,7 @@ let searchedWord = '';
 let currentWord = '';
 let needToCheck = false;
 let idLogger = [];
+let tileLogger = [];
 // let word1 = [];
 // let word2 = [];
 // let word3 = [];
@@ -40,18 +41,22 @@ function logButton(clicked_ID) {
     const btn = document.getElementById(clicked_ID);
     const chr = btn.innerText;
     if (chr === 'del') {
-        if (wroteChars >= 0) {
-            wroteChars--;
-            const str2 = currentWord.substring(0, currentWord.length - 1);
-            currentWord = str2;
-            document.getElementById('char_' + (wroteChars + 1)).innerHTML = '';
-            idLogger.splice(-1, 1);
-            console.log(currentWord);
-            checkWordLength();
+        // Es soll nur bis zum ersten Buchstben des Wortes gelöscht werden
+        if(checkedWords === 0) {
+            deleteLastChar(0);
+        }else if(checkedWords === 1) {
+            deleteLastChar(5);
+        }else if(checkedWords === 2) {
+            deleteLastChar(10);
+        }else if(checkedWords === 3) {
+            deleteLastChar(15);
+        }else if(checkedWords === 4) {
+            deleteLastChar(20);
         }
     } else {
         if (needToCheck === false) {
             idLogger.push(clicked_ID);
+            tileLogger.push('char_' + (wroteChars + 1))
             document.getElementById('char_' + (wroteChars + 1)).innerHTML = chr;
             currentWord = currentWord += chr;
             wroteChars++;
@@ -60,12 +65,33 @@ function logButton(clicked_ID) {
     }
 }
 
+function deleteLastChar(lastIndex) {
+    if (wroteChars >= lastIndex) {
+        wroteChars--;
+        const str2 = currentWord.substring(0, currentWord.length - 1);
+        currentWord = str2;
+        document.getElementById('char_' + (wroteChars + 1)).innerHTML = '';
+        idLogger.splice(-1, 1);
+        tileLogger.splice(-1, 1);
+        console.log(currentWord);
+        checkWordLength();
+    }
+}
+
 // Checkt Wortlänge um Prüfbutton einzublenden
 function checkWordLength() {
-    if (wroteChars === 4) {
+    if (checkedWords === 0 && wroteChars === 4) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
-    } else {
+    } else if(checkedWords === 1 && wroteChars === 9) {
+        checkbutton.style.visibility = 'visible';
+        needToCheck = true;
+    } else if(checkedWords === 2 && wroteChars === 14) {
+        checkbutton.style.visibility = 'visible';
+        needToCheck = true;
+    }
+    
+    else {
         checkbutton.style.visibility = 'hidden';
         needToCheck = false;
     }
@@ -87,11 +113,10 @@ checkbutton.addEventListener('click', () => {
     }
 
     if (wordExists === true) {
-        checkedWords++;
         checkLetters();
     } else {
         alert('Das Wort wurde nicht gefunden');
-        //! Auskommentieren
+        //? Checkletters nur zum testen verwenden sonst auskommentieren
         // checkLetters();
     }
 });
@@ -106,21 +131,23 @@ function checkLetters() {
         if (searchedWord.includes(currentWord[i])) {
             if (stillGreen.includes(idLogger[i])) {
                 console.log('Bereits grün');
-                document.getElementById('char_' + i).style.backgroundColor =
-                'orange';
+                // document.getElementById('char_' + i).style.backgroundColor = 'orange';
+                   document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
             } else {
+                console.log('vorhanden aber woanders');
                 // Buchstaben orange färben
                 document.getElementById(idLogger[i]).style.backgroundColor =
                     'orange';
                 // Buchstabe bei Wort orange färben
-                document.getElementById('char_' + i).style.backgroundColor =
-                    'orange';
+                // document.getElementById('char_' + i).style.backgroundColor = 'orange';
+                document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
             }
         } else {
+            console.log('Buchstabe nicht vorhanden');
             document.getElementById(idLogger[i]).style.backgroundColor =
                 'rgba(0,0,0,0.5)';
-            document.getElementById('char_' + i).style.backgroundColor =
-                'rgba(0,0,0,0.5)';
+            // document.getElementById('char_' + i).style.backgroundColor = 'rgba(0,0,0,0.5)';
+            document.getElementById(tileLogger[i]).style.backgroundColor = 'rgba(0,0,0,0.5)';
         }
         // Richtiger Buchstabe an gleicher Stelle?
         if (currentWord[i] === searchedWord[i]) {
@@ -129,8 +156,16 @@ function checkLetters() {
             document.getElementById(idLogger[i]).style.backgroundColor =
                 'green';
             // Buchstabe bei Wort grün färben
-            document.getElementById('char_' + i).style.backgroundColor =
-                'green';
+            // document.getElementById('char_' + i).style.backgroundColor = 'green';
+            document.getElementById(tileLogger[i]).style.backgroundColor = 'green';
         }
     }
+
+     //stillGreen = [];
+     idLogger = [];
+     tileLogger = [];
+     checkedWords++;
+     needToCheck = false;
+     checkbutton.style.visibility = 'hidden';
+     currentWord = '';
 }
