@@ -4,6 +4,10 @@
  * Daniel.V
  */
 
+// !Todo: Wenn gewonnen 1 Punkt, wenn verloren Wort einblenden  Reset
+// !Todo:
+// !Todo: -
+
 let checkedWords = 0;
 let wroteChars = -1;
 let searchedWord = '';
@@ -11,13 +15,9 @@ let currentWord = '';
 let needToCheck = false;
 let idLogger = [];
 let tileLogger = [];
-// let word1 = [];
-// let word2 = [];
-// let word3 = [];
-// let word4 = [];
-// let word5 = [];
 
 const checkbutton = document.getElementById('btnSend');
+const continueButton = document.getElementById("btnCont");
 
 window.onload = init();
 
@@ -75,6 +75,7 @@ function deleteLastChar(lastIndex) {
         tileLogger.splice(-1, 1);
         console.log(currentWord);
         checkWordLength();
+        console.log(`Lösche bis: ${lastIndex} - wroteChars: ${wroteChars}`);
     }
 }
 
@@ -89,8 +90,13 @@ function checkWordLength() {
     } else if(checkedWords === 2 && wroteChars === 14) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
+    } else if(checkedWords === 3 && wroteChars === 19) {
+        checkbutton.style.visibility = 'visible';
+        needToCheck = true;
+    } else if(checkedWords === 4 && wroteChars === 24) {
+        checkbutton.style.visibility = 'visible';
+        needToCheck = true;
     }
-    
     else {
         checkbutton.style.visibility = 'hidden';
         needToCheck = false;
@@ -106,8 +112,17 @@ checkbutton.addEventListener('click', () => {
         if (comparedWord === currentWord) {
             wordExists = true;
             if (searchedWord.toUpperCase() === currentWord) {
-                console.log('Gewonnen');
-                //!Todo: - Gewonnen Funktion
+                setTimeout(() => {
+                    //Todo Punkt adden und abspeichern
+                    document.getElementById("modalWindow").classList.add("active");
+                }, 1000);
+            }else {
+                if(checkedWords === 4) {
+                    alert(`Verloren. Gesucht wurde: ${searchedWord}`);
+                    setTimeout(() => {
+                        reset();
+                    }, 2000);
+                }
             }
         }
     }
@@ -116,14 +131,10 @@ checkbutton.addEventListener('click', () => {
         checkLetters();
     } else {
         alert('Das Wort wurde nicht gefunden');
-        //? Checkletters nur zum testen verwenden sonst auskommentieren
-        // checkLetters();
     }
 });
 
-// !Todo: idlogger resetten
-// !Todo: zum nächsten wort
-// !Todo: -
+
 
 function checkLetters() {
     let stillGreen = [];
@@ -169,3 +180,25 @@ function checkLetters() {
      checkbutton.style.visibility = 'hidden';
      currentWord = '';
 }
+
+
+continueButton.addEventListener("click", ()=> {
+    document.getElementById("modalWindow").classList.remove("active");
+    setTimeout(() => {
+        reset();
+    }, 1000);
+})
+
+function reset() {
+        //  stillGreen = [];
+        //  idLogger = [];
+        //  tileLogger = [];
+        //  checkedWords++;
+        //  needToCheck = false;
+        //  checkbutton.style.visibility = 'hidden';
+        //  currentWord = '';
+        location.reload();
+        
+}
+
+
