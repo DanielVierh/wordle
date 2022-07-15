@@ -19,6 +19,9 @@ let tileLogger = [];
 const checkbutton = document.getElementById('btnSend');
 const continueButton = document.getElementById("btnCont");
 
+// Bis 1782
+const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen", "Außer", "Außen", "Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig"]
+
 window.onload = init();
 
 function init() {
@@ -27,12 +30,13 @@ function init() {
 
 function createNewWord() {
     const rndNumb = parseInt(Math.random() * countWordList());
-    searchedWord = words[rndNumb].toUpperCase();
+    searchedWord = wordlist[rndNumb].toUpperCase();
     console.log(searchedWord);
 }
 
 function countWordList() {
-    const wordListAmount = words.length;
+    const wordListAmount = wordlist.length;
+    console.log(wordListAmount);
     return wordListAmount;
 }
 
@@ -42,16 +46,18 @@ function logButton(clicked_ID) {
     const chr = btn.innerText;
     if (chr === 'del') {
         // Es soll nur bis zum ersten Buchstben des Wortes gelöscht werden
-        if(checkedWords === 0) {
+        if (checkedWords === 0) {
             deleteLastChar(0);
-        }else if(checkedWords === 1) {
+        } else if (checkedWords === 1) {
             deleteLastChar(5);
-        }else if(checkedWords === 2) {
+        } else if (checkedWords === 2) {
             deleteLastChar(10);
-        }else if(checkedWords === 3) {
+        } else if (checkedWords === 3) {
             deleteLastChar(15);
-        }else if(checkedWords === 4) {
+        } else if (checkedWords === 4) {
             deleteLastChar(20);
+        }else if (checkedWords === 5) {
+            deleteLastChar(25);
         }
     } else {
         if (needToCheck === false) {
@@ -84,16 +90,19 @@ function checkWordLength() {
     if (checkedWords === 0 && wroteChars === 4) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
-    } else if(checkedWords === 1 && wroteChars === 9) {
+    } else if (checkedWords === 1 && wroteChars === 9) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
-    } else if(checkedWords === 2 && wroteChars === 14) {
+    } else if (checkedWords === 2 && wroteChars === 14) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
-    } else if(checkedWords === 3 && wroteChars === 19) {
+    } else if (checkedWords === 3 && wroteChars === 19) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
-    } else if(checkedWords === 4 && wroteChars === 24) {
+    } else if (checkedWords === 4 && wroteChars === 24) {
+        checkbutton.style.visibility = 'visible';
+        needToCheck = true;
+    }else if (checkedWords === 5 && wroteChars === 29) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
     }
@@ -116,8 +125,8 @@ checkbutton.addEventListener('click', () => {
                     //Todo Punkt adden und abspeichern
                     document.getElementById("modalWindow").classList.add("active");
                 }, 1000);
-            }else {
-                if(checkedWords === 4) {
+            } else {
+                if (checkedWords === 5) {
                     alert(`Verloren. Gesucht wurde: ${searchedWord}`);
                     setTimeout(() => {
                         reset();
@@ -143,7 +152,7 @@ function checkLetters() {
             if (stillGreen.includes(idLogger[i])) {
                 console.log('Bereits grün');
                 // document.getElementById('char_' + i).style.backgroundColor = 'orange';
-                   document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
+                document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
             } else {
                 console.log('vorhanden aber woanders');
                 // Buchstaben orange färben
@@ -172,17 +181,17 @@ function checkLetters() {
         }
     }
 
-     //stillGreen = [];
-     idLogger = [];
-     tileLogger = [];
-     checkedWords++;
-     needToCheck = false;
-     checkbutton.style.visibility = 'hidden';
-     currentWord = '';
+    //stillGreen = [];
+    idLogger = [];
+    tileLogger = [];
+    checkedWords++;
+    needToCheck = false;
+    checkbutton.style.visibility = 'hidden';
+    currentWord = '';
 }
 
 
-continueButton.addEventListener("click", ()=> {
+continueButton.addEventListener("click", () => {
     document.getElementById("modalWindow").classList.remove("active");
     setTimeout(() => {
         reset();
@@ -190,15 +199,15 @@ continueButton.addEventListener("click", ()=> {
 })
 
 function reset() {
-        //  stillGreen = [];
-        //  idLogger = [];
-        //  tileLogger = [];
-        //  checkedWords++;
-        //  needToCheck = false;
-        //  checkbutton.style.visibility = 'hidden';
-        //  currentWord = '';
-        location.reload();
-        
+    //  stillGreen = [];
+    //  idLogger = [];
+    //  tileLogger = [];
+    //  checkedWords++;
+    //  needToCheck = false;
+    //  checkbutton.style.visibility = 'hidden';
+    //  currentWord = '';
+    location.reload();
+
 }
 
 

@@ -61,6 +61,7 @@ body {
     visibility: hidden;
     background-color: green;
     width: 100px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,6 +73,11 @@ body {
     letter-spacing: 2px;
     margin: -10px auto;
     cursor: pointer;
+    z-index: 30000;
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
 }
 
 
