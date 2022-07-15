@@ -16,6 +16,7 @@ let needToCheck = false;
 let idLogger = [];
 let tileLogger = [];
 
+
 const checkbutton = document.getElementById('btnSend');
 const continueButton = document.getElementById("btnCont");
 
