@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background-color: rgba(0, 0, 0, 0.932);
 }
 
 .wordholder {
@@ -19,7 +20,7 @@ body {
 .usededChars {
     width: 40px;
     height: 40px;
-    border: 1px solid black;
+    border: 1.5px dashed rgb(14, 211, 211);
     border-radius: 5px;
     margin: 5px;
     display: flex;
@@ -27,6 +28,7 @@ body {
     align-items: center;
     font-size: 2em;
     font-weight: bold;
+    color: white;
 
 }
 
@@ -118,4 +120,37 @@ body {
     letter-spacing: 2px;
     margin-top: 20px;
     cursor: pointer;
+}
+
+
+.level {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 30px;
+    background-color: blue;
+    box-shadow: inset 0 0 15px rgb(26, 161, 105);
+    color: white;
+    border-radius: 0 0 10px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.credits {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 30px;
+    background-color: rgb(255, 123, 0);
+    box-shadow: inset 0 0 15px rgb(232, 233, 222);
+    color: white;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

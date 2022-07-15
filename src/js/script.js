@@ -123,13 +123,14 @@ checkbutton.addEventListener('click', () => {
             if (searchedWord.toUpperCase() === currentWord) {
                 setTimeout(() => {
                     //Todo Punkt adden und abspeichern
+                    gameMessage('win', 'green');
                     document.getElementById("modalWindow").classList.add("active");
                 }, 1000);
             } else {
                 if (checkedWords === 5) {
-                    alert(`Verloren. Gesucht wurde: ${searchedWord}`);
                     setTimeout(() => {
-                        reset();
+                        gameMessage('loose', 'red');
+                        document.getElementById("modalWindow").classList.add("active");
                     }, 2000);
                 }
             }
@@ -151,7 +152,6 @@ function checkLetters() {
         if (searchedWord.includes(currentWord[i])) {
             if (stillGreen.includes(idLogger[i])) {
                 console.log('Bereits grün');
-                // document.getElementById('char_' + i).style.backgroundColor = 'orange';
                 document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
             } else {
                 console.log('vorhanden aber woanders');
@@ -159,15 +159,12 @@ function checkLetters() {
                 document.getElementById(idLogger[i]).style.backgroundColor =
                     'orange';
                 // Buchstabe bei Wort orange färben
-                // document.getElementById('char_' + i).style.backgroundColor = 'orange';
                 document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
             }
         } else {
             console.log('Buchstabe nicht vorhanden');
-            document.getElementById(idLogger[i]).style.backgroundColor =
-                'rgba(0,0,0,0.5)';
-            // document.getElementById('char_' + i).style.backgroundColor = 'rgba(0,0,0,0.5)';
-            document.getElementById(tileLogger[i]).style.backgroundColor = 'rgba(0,0,0,0.5)';
+            document.getElementById(idLogger[i]).style.backgroundColor = 'grey';
+            document.getElementById(tileLogger[i]).style.backgroundColor = 'grey';
         }
         // Richtiger Buchstabe an gleicher Stelle?
         if (currentWord[i] === searchedWord[i]) {
@@ -176,7 +173,6 @@ function checkLetters() {
             document.getElementById(idLogger[i]).style.backgroundColor =
                 'green';
             // Buchstabe bei Wort grün färben
-            // document.getElementById('char_' + i).style.backgroundColor = 'green';
             document.getElementById(tileLogger[i]).style.backgroundColor = 'green';
         }
     }
@@ -199,15 +195,34 @@ continueButton.addEventListener("click", () => {
 })
 
 function reset() {
-    //  stillGreen = [];
-    //  idLogger = [];
-    //  tileLogger = [];
-    //  checkedWords++;
-    //  needToCheck = false;
-    //  checkbutton.style.visibility = 'hidden';
-    //  currentWord = '';
     location.reload();
+}
+
+function gameMessage(status, color) {
+    const h2Message = document.getElementById("status");
+    const message = document.getElementById("msg");
+    if(status === 'win') {
+        const points =parseInt( 10 / checkedWords);
+        h2Message.innerHTML = "Richtiiig";
+        message.innerHTML = `Du erhälst ${points} Punkte`;
+    }else {
+        h2Message.innerHTML = "GAME OVER";
+        message.innerHTML = `Gesucht wurde das Wort: "${searchedWord}"`;
+    }
+
+    h2Message.style.color = color;
+    message.style.color = color;
+}
+
+
+function loadData() {
 
 }
+
+function saveData() {
+
+}
+
+
 
 
