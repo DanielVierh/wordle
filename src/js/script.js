@@ -13,6 +13,8 @@ let currentWord = '';
 let needToCheck = false;
 let idLogger = [];
 let tileLogger = [];
+let lastPoints = 0;
+
 
 let creditObj = {
     credits: 0,
@@ -24,6 +26,7 @@ const checkbutton = document.getElementById('btnSend');
 const continueButton = document.getElementById("btnCont");
 const lblLevel = document.getElementById("lblLevel");
 const lblCredits = document.getElementById("lblCredits");
+const animationLbl = document.getElementById("pointanimation");
 
 // Bis 1782
 const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen","Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig"]
@@ -195,10 +198,19 @@ function checkLetters() {
 
 continueButton.addEventListener("click", () => {
     document.getElementById("modalWindow").classList.remove("active");
+    showAnimation();
+    setTimeout(() => {
+        renderCredits();
+    }, 2000);
     setTimeout(() => {
         reset();
-    }, 1000);
-})
+    }, 3000);
+});
+
+function showAnimation() {
+    animationLbl.classList.add("active");
+    animationLbl.innerHTML = lastPoints + ' $';
+}
 
 function reset() {
     location.reload();
@@ -209,10 +221,10 @@ function gameMessage(status, color) {
     const message = document.getElementById("msg");
     if(status === 'win') {
         const points = parseInt( 10 / checkedWords);
+        lastPoints = points;
         creditObj.credits += points;
         creditObj.level += 1;
         save_into_LocalStorage();
-        renderCredits();
         h2Message.innerHTML = "Richtiiig";
         message.innerHTML = `Du erhälst ${points} Punkte`;
     }else {

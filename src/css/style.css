@@ -154,3 +154,56 @@ body {
     align-items: center;
     text-align: center;
 }
+
+.pointanimation {
+    visibility: hidden;
+    color: yellow;
+    border: 5px solid yellow;
+    background-color: rgba(255, 255, 0, 0.329);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: fixed;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.pointanimation.active {
+    visibility: visible;
+    animation: coinAnimation 2s;
+}
+
+@keyframes coinAnimation {
+    0% {
+        top: 40%;
+        left: 50%;
+    }
+
+    50% {
+        top: 40%;
+        left: 50%;
+    }
+
+    /* 50% {
+        top: 20%;
+        left: 70%;
+    } */
+
+    75% {
+        top: 5%;
+        left: 90%;
+    }
+
+    100% {
+        top: 5%;
+        left: 90%;
+        visibility: hidden;
+    }
+}
