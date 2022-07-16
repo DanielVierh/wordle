@@ -4,9 +4,7 @@
  * Daniel.V
  */
 
-// !Todo: Wenn gewonnen 1 Punkt, wenn verloren Wort einblenden  Reset
-// !Todo:
-// !Todo: -
+// !Todo: 
 
 let checkedWords = 0;
 let wroteChars = -1;
@@ -16,17 +14,25 @@ let needToCheck = false;
 let idLogger = [];
 let tileLogger = [];
 
+let creditObj = {
+    credits: 0,
+    level: 0
+}
+
 
 const checkbutton = document.getElementById('btnSend');
 const continueButton = document.getElementById("btnCont");
+const lblLevel = document.getElementById("lblLevel");
+const lblCredits = document.getElementById("lblCredits");
 
 // Bis 1782
-const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen", "Außer", "Außen", "Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig"]
+const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen","Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig"]
 
 window.onload = init();
 
 function init() {
     createNewWord();
+    load_from_LocalStorage();
 }
 
 function createNewWord() {
@@ -123,7 +129,6 @@ checkbutton.addEventListener('click', () => {
             wordExists = true;
             if (searchedWord.toUpperCase() === currentWord) {
                 setTimeout(() => {
-                    //Todo Punkt adden und abspeichern
                     gameMessage('win', 'green');
                     document.getElementById("modalWindow").classList.add("active");
                 }, 1000);
@@ -203,7 +208,11 @@ function gameMessage(status, color) {
     const h2Message = document.getElementById("status");
     const message = document.getElementById("msg");
     if(status === 'win') {
-        const points =parseInt( 10 / checkedWords);
+        const points = parseInt( 10 / checkedWords);
+        creditObj.credits += points;
+        creditObj.level += 1;
+        save_into_LocalStorage();
+        renderCredits();
         h2Message.innerHTML = "Richtiiig";
         message.innerHTML = `Du erhälst ${points} Punkte`;
     }else {
@@ -216,14 +225,24 @@ function gameMessage(status, color) {
 }
 
 
-function loadData() {
-
+function load_from_LocalStorage() {
+    if (localStorage.getItem('stored_CreditObj') !== null) {
+        creditObj = JSON.parse(localStorage.getItem('stored_CreditObj'));
+        renderCredits();
+    } 
 }
 
-function saveData() {
+const save_into_LocalStorage = () => {
+    localStorage.setItem('stored_CreditObj', JSON.stringify(creditObj));
+};
 
+
+function renderCredits() {
+    lblCredits.innerHTML = creditObj.credits + ' $';
+    lblLevel.innerHTML = 'Lv. ' + creditObj.level;
 }
 
-
-
-
+// Joker
+lblCredits.addEventListener("click", ()=> {
+    alert("Baustelle")
+});
