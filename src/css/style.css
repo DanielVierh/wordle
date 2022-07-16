@@ -157,18 +157,19 @@ body {
 
 .pointanimation {
     visibility: hidden;
-    color: yellow;
-    border: 5px solid yellow;
-    background-color: rgba(255, 255, 0, 0.329);
-    width: 80px;
-    height: 80px;
+    color: orange;
+    border: 5px solid rgb(255, 218, 6);
+    background-color: yellow;
+    text-shadow: 1px 1px 3px black;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     position: fixed;
     font-weight: bold;
-    top: 50%;
-    left: 50%;
+    top: 5%;
+    left: 90%;
     transform: translate(-50%, -50%);
-    font-size: 2em;
+    font-size: 1.6em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +178,7 @@ body {
 
 .pointanimation.active {
     visibility: visible;
-    animation: coinAnimation 2s;
+    animation: coinAnimation 1.5s;
 }
 
 @keyframes coinAnimation {
@@ -202,8 +203,9 @@ body {
     }
 
     100% {
+        visibility: hidden;
         top: 5%;
         left: 90%;
-        visibility: hidden;
+
     }
 }
