@@ -17,7 +17,7 @@ let lastPoints = 0;
 
 
 let creditObj = {
-    credits: 0,
+    credits: 20,
     level: 0
 }
 
@@ -218,7 +218,7 @@ function gameMessage(status, color) {
     const h2Message = document.getElementById("status");
     const message = document.getElementById("msg");
     if (status === 'win') {
-        const points = parseInt(10 / checkedWords);
+        const points = parseInt(12 / checkedWords);
         lastPoints = points;
         creditObj.credits += points;
         creditObj.level += 1;
@@ -255,10 +255,10 @@ function renderCredits() {
 // Joker
 lblCredits.addEventListener("click", () => {
 
-    if (creditObj.credits >= 3) {
-        const confirm = window.confirm("Den nächsten Buchstabe für 3 $ aufdecken?");
+    if (creditObj.credits >= 2) {
+        const confirm = window.confirm("Den nächsten Buchstabe für 2 $ aufdecken?");
         if (confirm) {
-            creditObj.credits -= 3;
+            creditObj.credits -= 2;
             save_into_LocalStorage();
             renderCredits();
             let maxCharIndex = 4;
@@ -283,7 +283,7 @@ lblCredits.addEventListener("click", () => {
                 if (document.getElementById('char_' + (i)).innerHTML === '') {
                     document.getElementById('char_' + (i)).innerHTML = searchedWord[counter];
 
-                    idLogger.push(`btn_${i}`);
+                    idLogger.push(`btn_${counter}`);
                     tileLogger.push('char_' + (i))
                     currentWord = currentWord += searchedWord[counter];
                     wroteChars++;
@@ -293,6 +293,6 @@ lblCredits.addEventListener("click", () => {
             }
         } 
     }else {
-        alert("Mindestens 3 $ erforderlich!");
+        alert("Mindestens 2 $ erforderlich!");
     }
 });
