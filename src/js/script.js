@@ -29,7 +29,7 @@ const lblCredits = document.getElementById("lblCredits");
 const animationLbl = document.getElementById("pointanimation");
 
 // Bis 1782
-const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen","Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig"]
+const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen", "Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig"]
 
 window.onload = init();
 
@@ -66,7 +66,7 @@ function logButton(clicked_ID) {
             deleteLastChar(15);
         } else if (checkedWords === 4) {
             deleteLastChar(20);
-        }else if (checkedWords === 5) {
+        } else if (checkedWords === 5) {
             deleteLastChar(25);
         }
     } else {
@@ -112,7 +112,7 @@ function checkWordLength() {
     } else if (checkedWords === 4 && wroteChars === 24) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
-    }else if (checkedWords === 5 && wroteChars === 29) {
+    } else if (checkedWords === 5 && wroteChars === 29) {
         checkbutton.style.visibility = 'visible';
         needToCheck = true;
     }
@@ -179,14 +179,12 @@ function checkLetters() {
         if (currentWord[i] === searchedWord[i]) {
             stillGreen.push(idLogger[i]);
             // Buchstaben grün färben
-            document.getElementById(idLogger[i]).style.backgroundColor =
-                'green';
+            document.getElementById(idLogger[i]).style.backgroundColor = 'green';
             // Buchstabe bei Wort grün färben
             document.getElementById(tileLogger[i]).style.backgroundColor = 'green';
         }
     }
 
-    //stillGreen = [];
     idLogger = [];
     tileLogger = [];
     checkedWords++;
@@ -219,15 +217,15 @@ function reset() {
 function gameMessage(status, color) {
     const h2Message = document.getElementById("status");
     const message = document.getElementById("msg");
-    if(status === 'win') {
-        const points = parseInt( 10 / checkedWords);
+    if (status === 'win') {
+        const points = parseInt(10 / checkedWords);
         lastPoints = points;
         creditObj.credits += points;
         creditObj.level += 1;
         save_into_LocalStorage();
         h2Message.innerHTML = "Richtiiig";
         message.innerHTML = `Du erhälst ${points} Punkte`;
-    }else {
+    } else {
         h2Message.innerHTML = "GAME OVER";
         message.innerHTML = `Gesucht wurde das Wort: "${searchedWord}"`;
     }
@@ -241,7 +239,7 @@ function load_from_LocalStorage() {
     if (localStorage.getItem('stored_CreditObj') !== null) {
         creditObj = JSON.parse(localStorage.getItem('stored_CreditObj'));
         renderCredits();
-    } 
+    }
 }
 
 const save_into_LocalStorage = () => {
@@ -255,6 +253,46 @@ function renderCredits() {
 }
 
 // Joker
-lblCredits.addEventListener("click", ()=> {
-    alert("Baustelle")
+lblCredits.addEventListener("click", () => {
+
+    if (creditObj.credits >= 3) {
+        const confirm = window.confirm("Den nächsten Buchstabe für 3 $ aufdecken?");
+        if (confirm) {
+            creditObj.credits -= 3;
+            save_into_LocalStorage();
+            renderCredits();
+            let maxCharIndex = 4;
+            if (checkedWords === 1) {
+                maxCharIndex = 9;
+            }
+            if (checkedWords === 2) {
+                maxCharIndex = 14;
+            }
+            if (checkedWords === 3) {
+                maxCharIndex = 19;
+            }
+            if (checkedWords === 4) {
+                maxCharIndex = 24;
+            }
+            if (checkedWords === 5) {
+                maxCharIndex = 29;
+            }
+            let counter = -1;
+            for (let i = (maxCharIndex - 4); i < maxCharIndex + 1; i++) {
+                counter++;
+                if (document.getElementById('char_' + (i)).innerHTML === '') {
+                    document.getElementById('char_' + (i)).innerHTML = searchedWord[counter];
+
+                    idLogger.push(`btn_${i}`);
+                    tileLogger.push('char_' + (i))
+                    currentWord = currentWord += searchedWord[counter];
+                    wroteChars++;
+                    checkWordLength();
+                    break;
+                }
+            }
+        } 
+    }else {
+        alert("Mindestens 3 $ erforderlich!");
+    }
 });
