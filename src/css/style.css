@@ -20,7 +20,7 @@ body {
 .usededChars {
     width: 40px;
     height: 40px;
-    border: 1.5px dashed rgb(14, 211, 211);
+    border: 1.5px dashed rgba(226, 234, 234, 0.519);
     border-radius: 5px;
     margin: 5px;
     display: flex;

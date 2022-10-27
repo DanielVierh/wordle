@@ -163,6 +163,7 @@ function checkLetters() {
             if (stillGreen.includes(idLogger[i])) {
                 console.log('Bereits grün');
                 document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
+                document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
             } else {
                 console.log('vorhanden aber woanders');
                 // Buchstaben orange färben
@@ -170,11 +171,13 @@ function checkLetters() {
                     'orange';
                 // Buchstabe bei Wort orange färben
                 document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
+                document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
             }
         } else {
             console.log('Buchstabe nicht vorhanden');
             document.getElementById(idLogger[i]).style.backgroundColor = 'grey';
             document.getElementById(tileLogger[i]).style.backgroundColor = 'grey';
+            document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
         }
         // Richtiger Buchstabe an gleicher Stelle?
         if (currentWord[i] === searchedWord[i]) {
@@ -183,6 +186,7 @@ function checkLetters() {
             document.getElementById(idLogger[i]).style.backgroundColor = 'green';
             // Buchstabe bei Wort grün färben
             document.getElementById(tileLogger[i]).style.backgroundColor = 'green';
+            document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
         }
     }
 
@@ -329,10 +333,7 @@ jokerValids.addEventListener("click", ()=>{
                     // Wenn nein, Button grau färben
                     currentButton.style.backgroundColor = 'grey';
                 }
-
-
             }
-
         }
     }else {
         alert("Mindestens 6 $ erforderlich!");
