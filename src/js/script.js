@@ -4,7 +4,7 @@
  * Daniel.V
  */
 
-// !Todo: 
+// !Todo:
 
 let checkedWords = 0;
 let wroteChars = -1;
@@ -25,7 +25,8 @@ let creditObj = {
 const checkbutton = document.getElementById('btnSend');
 const continueButton = document.getElementById("btnCont");
 const lblLevel = document.getElementById("lblLevel");
-const lblCredits = document.getElementById("lblCredits");
+const jokerLetter = document.getElementById("jokerLetter");
+const jokerValids = document.getElementById("jokerValids");
 const animationLbl = document.getElementById("pointanimation");
 
 // Bis 1782
@@ -250,12 +251,11 @@ const save_into_LocalStorage = () => {
 
 
 function renderCredits() {
-    lblCredits.innerHTML = creditObj.credits + ' $';
-    lblLevel.innerHTML = 'Lv. ' + creditObj.level;
+    lblLevel.innerHTML = `LV. ${creditObj.level} | ${creditObj.credits} $`;
 }
 
 // Joker
-lblCredits.addEventListener("click", () => {
+jokerLetter.addEventListener("click", () => {
 
     if (creditObj.credits >= 2) {
         const confirm = window.confirm("Den nächsten Buchstabe für 2 $ aufdecken?");
@@ -283,18 +283,58 @@ lblCredits.addEventListener("click", () => {
             for (let i = (maxCharIndex - 4); i < maxCharIndex + 1; i++) {
                 counter++;
                 if (document.getElementById('char_' + (i)).innerHTML === '') {
-                    document.getElementById('char_' + (i)).innerHTML = searchedWord[counter];
-
+                    const coveredLetter = searchedWord[counter];
+                    document.getElementById('char_' + (i)).innerHTML = coveredLetter;
                     idLogger.push(`btn_${counter}`);
-                    tileLogger.push('char_' + (i))
-                    currentWord = currentWord += searchedWord[counter];
+                    tileLogger.push('char_' + (i));
+                    currentWord = currentWord += coveredLetter;
+                    let coveredLetterButtonId = '';
+                    for(let j = 0; j <= 26; j++) {
+                        const currentButton = document.getElementById(`btn_${j}`);
+                        const currentButtonLetter = currentButton.innerHTML;
+                        if(currentButtonLetter === coveredLetter) {
+                            currentButton.style.backgroundColor = 'green';
+                            break;
+                        }
+                    }
                     wroteChars++;
                     checkWordLength();
                     break;
                 }
             }
-        } 
+        }
     }else {
         alert("Mindestens 2 $ erforderlich!");
     }
 });
+
+
+
+jokerValids.addEventListener("click", ()=>{
+    if (creditObj.credits >= 6) {
+        const confirm = window.confirm("Nur noch die gültigen für 6 $ anzeigen?");
+        if (confirm) {
+            creditObj.credits -= 6;
+            save_into_LocalStorage();
+            renderCredits();
+
+            for (let i = 0; i <= 25; i++) {
+                // Button Bezeichnung nehemen
+                const currentButton = document.getElementById(`btn_${i}`);
+                const currentButtonLetter = currentButton.innerHTML;
+                // Wenn Buttonbezeichnung im gesuchten Wort?
+                if(searchedWord.includes(currentButtonLetter)) {
+
+                }else {
+                    // Wenn nein, Button grau färben
+                    currentButton.style.backgroundColor = 'grey';
+                }
+
+
+            }
+
+        }
+    }else {
+        alert("Mindestens 6 $ erforderlich!");
+    }
+})
