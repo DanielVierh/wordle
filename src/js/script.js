@@ -289,9 +289,11 @@ jokerLetter.addEventListener("click", () => {
                 if (document.getElementById('char_' + (i)).innerHTML === '') {
                     const coveredLetter = searchedWord[counter];
                     document.getElementById('char_' + (i)).innerHTML = coveredLetter;
+                    document.getElementById('char_' + (i)).style.backgroundColor = 'green';
                     idLogger.push(`btn_${counter}`);
                     tileLogger.push('char_' + (i));
                     currentWord = currentWord += coveredLetter;
+                    // Buchstaben färben
                     let coveredLetterButtonId = '';
                     for(let j = 0; j <= 26; j++) {
                         const currentButton = document.getElementById(`btn_${j}`);
