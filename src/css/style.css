@@ -8,7 +8,7 @@ body {
 .wordholder {
     display: flex;
     flex-direction: column;
-    margin: 40px 0 10px 5px;
+    margin: 65px 0 10px 5px;
 }
 
 .word {
@@ -40,7 +40,7 @@ body {
     width: 90%;
     max-width: 550px;
     position: fixed;
-    bottom: 10px;
+    bottom: 70px;
     left: 0;
     right: 0;
 }
