@@ -35,8 +35,17 @@ const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell",
 window.onload = init();
 
 function init() {
+    checkServiceWorker();
     createNewWord();
     load_from_LocalStorage();
+}
+
+function checkServiceWorker() {
+    if("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/wordle/serviceWorker.js", { scope: "/wordle/"})
+        .then(()=>  console.log('ServiceWorker geladen'))
+        .catch((error) => console.warn(error))
+    }
 }
 
 function createNewWord() {

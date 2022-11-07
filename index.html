@@ -1,116 +1,134 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="shortcut icon" type="image/png" href="src/assets/logo.png">
-    <link rel="apple-touch-icon" href="src/assets/logo.png">
     <title>Wordle</title>
-</head>
-
-<body>
+    <link rel="canonical" href="https://danielvierh.github.io/wordle/" />
+    <link rel="manifest" href="danielvierh.github.io/wordle/manifest.json">
+    <link rel="apple-touch-icon" href="icons/apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  </head>
+  <body>
     <div class="pointanimation" id="pointanimation"></div>
-
     <div class="modal" id="modalWindow">
-        <h2 id="status">Richtiiig</h2>
-        <p id="msg">Gesucht wurde das Wort Brote</p>
-        <div class="continueButton" id="btnCont">Weiter</div>
+      <h2 id="status">Richtiiig</h2>
+      <p id="msg">Gesucht wurde das Wort Brote</p>
+      <div class="continueButton" id="btnCont">Weiter</div>
     </div>
-
     <div class="level" id="lblLevel"></div>
-
     <div class="jokerWrapper">
-        <div class="credits" id="jokerLetter">1 Aufdecken</div>
-        <div class="credits" id="jokerValids">Nur gültige</div>
+      <div class="credits" id="jokerLetter">1 Aufdecken</div>
+      <div class="credits" id="jokerValids">Nur gültige</div>
     </div>
-
-
     <div class="wordholder">
-        <div class="word">
-            <div class="usededChars" id="char_0"></div>
-            <div class="usededChars" id="char_1"></div>
-            <div class="usededChars" id="char_2"></div>
-            <div class="usededChars" id="char_3"></div>
-            <div class="usededChars" id="char_4"></div>
-        </div>
-
-        <div class="word">
-            <div class="usededChars" id="char_5"></div>
-            <div class="usededChars" id="char_6"></div>
-            <div class="usededChars" id="char_7"></div>
-            <div class="usededChars" id="char_8"></div>
-            <div class="usededChars" id="char_9"></div>
-        </div>
-
-        <div class="word">
-            <div class="usededChars" id="char_10"></div>
-            <div class="usededChars" id="char_11"></div>
-            <div class="usededChars" id="char_12"></div>
-            <div class="usededChars" id="char_13"></div>
-            <div class="usededChars" id="char_14"></div>
-        </div>
-
-        <div class="word">
-            <div class="usededChars" id="char_15"></div>
-            <div class="usededChars" id="char_16"></div>
-            <div class="usededChars" id="char_17"></div>
-            <div class="usededChars" id="char_18"></div>
-            <div class="usededChars" id="char_19"></div>
-        </div>
-
-        <div class="word">
-            <div class="usededChars" id="char_20"></div>
-            <div class="usededChars" id="char_21"></div>
-            <div class="usededChars" id="char_22"></div>
-            <div class="usededChars" id="char_23"></div>
-            <div class="usededChars" id="char_24"></div>
-        </div>
-
-        <div class="word">
-            <div class="usededChars" id="char_25"></div>
-            <div class="usededChars" id="char_26"></div>
-            <div class="usededChars" id="char_27"></div>
-            <div class="usededChars" id="char_28"></div>
-            <div class="usededChars" id="char_29"></div>
-        </div>
+      <div class="word">
+        <div class="usededChars" id="char_0"></div>
+        <div class="usededChars" id="char_1"></div>
+        <div class="usededChars" id="char_2"></div>
+        <div class="usededChars" id="char_3"></div>
+        <div class="usededChars" id="char_4"></div>
+      </div>
+      <div class="word">
+        <div class="usededChars" id="char_5"></div>
+        <div class="usededChars" id="char_6"></div>
+        <div class="usededChars" id="char_7"></div>
+        <div class="usededChars" id="char_8"></div>
+        <div class="usededChars" id="char_9"></div>
+      </div>
+      <div class="word">
+        <div class="usededChars" id="char_10"></div>
+        <div class="usededChars" id="char_11"></div>
+        <div class="usededChars" id="char_12"></div>
+        <div class="usededChars" id="char_13"></div>
+        <div class="usededChars" id="char_14"></div>
+      </div>
+      <div class="word">
+        <div class="usededChars" id="char_15"></div>
+        <div class="usededChars" id="char_16"></div>
+        <div class="usededChars" id="char_17"></div>
+        <div class="usededChars" id="char_18"></div>
+        <div class="usededChars" id="char_19"></div>
+      </div>
+      <div class="word">
+        <div class="usededChars" id="char_20"></div>
+        <div class="usededChars" id="char_21"></div>
+        <div class="usededChars" id="char_22"></div>
+        <div class="usededChars" id="char_23"></div>
+        <div class="usededChars" id="char_24"></div>
+      </div>
+      <div class="word">
+        <div class="usededChars" id="char_25"></div>
+        <div class="usededChars" id="char_26"></div>
+        <div class="usededChars" id="char_27"></div>
+        <div class="usededChars" id="char_28"></div>
+        <div class="usededChars" id="char_29"></div>
+      </div>
     </div>
-
     <div class="roundButton" id="btnSend">Prüfen</div>
-
     <div class="keyboardholder">
-        <div class="key" onclick="logButton(this.id)" id="btn_0">A</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_1">B</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_2">C</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_3">D</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_4">E</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_5">F</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_6">G</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_7">H</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_8">I</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_9">J</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_10">K</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_11">L</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_12">M</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_13">N</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_14">O</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_15">P</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_16">Q</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_17">R</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_18">S</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_19">T</div>
-        <div class="key" onclick="logButton(this.id)"  id="btn_20">U</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_21">V</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_22">W</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_23">X</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_24">Y</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_25">Z</div>
-        <div class="key" onclick="logButton(this.id)" id="btn_26">del</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_0">A</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_1">B</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_2">C</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_3">D</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_4">E</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_5">F</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_6">G</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_7">H</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_8">I</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_9">J</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_10">K</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_11">L</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_12">M</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_13">N</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_14">O</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_15">P</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_16">Q</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_17">R</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_18">S</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_19">T</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_20">U</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_21">V</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_22">W</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_23">X</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_24">Y</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_25">Z</div>
+      <div class="key" onclick="logButton(this.id)" id="btn_26">del</div>
     </div>
-
     <script src="src/js/word.js"></script>
     <script src="src/js/script.js"></script>
-</body>
-
+  </body>
 </html>
