@@ -201,8 +201,8 @@ body {
     border: 5px solid rgb(255, 218, 6);
     background-color: yellow;
     text-shadow: 1px 1px 3px black;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     position: fixed;
     font-weight: bold;
@@ -216,36 +216,35 @@ body {
     text-align: center;
 }
 
+
+
 .pointanimation.active {
     visibility: visible;
-    animation: coinAnimation 1.5s;
+    animation: coinAnimation .3s;
 }
+
+
 
 @keyframes coinAnimation {
     0% {
-        top: 40%;
-        right: 50%;
+        top: 0%;
+        right: 0%;
     }
 
     50% {
-        top: 40%;
-        right: 50%;
+        top: 70%;
+        right: 60%;
     }
-
-    /* 50% {
-        top: 20%;
-        left: 70%;
-    } */
 
     75% {
         top: 5%;
-        right: 80%;
+        right: 90%;
     }
 
     100% {
         visibility: hidden;
         top: 5%;
-        right: 80%;
-
+        right: 90%;
     }
 }
+
