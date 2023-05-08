@@ -32,7 +32,7 @@ const animationLbl2 = document.getElementById("pointanimation2");
 const body = document.getElementById("body");
 
 // Bis 5544 vor Miami
-const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen", "Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig","eckig","Eifel","Eifer","Eigen","Einst","Elche","Email","Enkel","Enten","Essen","Essig","Ester","Etage","Etwas","Event","Exten","Extra","Faden","Fahne","Fahrt","Falke","Falle","Falls","Faser","Fauna","Faxen","Fazit","Feger","fegen","Feige","Feier","fehlt","Feind","Felle","Feuer","Fiber","Figur","Filme","Final","Flach","Floss","Fluch","Fokus","Funke","Galle","Gebot","Gebet","Gehen","Gegen","gehst","Geige","Geier","Genau","Genom","Genre","genug","Glanz","glatt","Gramm","Gyros","Haare","Hacke","Hafen","Hafer","Hagel","Hallo","Hasen","Hatte","Hauch","Haube","hauen","Haupt","Hebel","heben","Hecke","Hecht","hebst","hefig","hefte","heilt","Henne","Heute","Hexer","Hexen","Hilfe","Hirse","Hirte","Hobby","Hobel","Honig","Hotel","Hunde","hupen","Ibiza","Ikone","Imker","Immer","Index","Infos","innen","Insel","Intel","Ionen","Irren","Jacke","Jagen","jagte","Jahre","Jeder","Jetzt","Jubel","juckt","Juror","Kamel","Kanne","Kante","Kappe","Kater","Katze","kauen","kauft","Kebab","Kegel","Kehle","Keile","Keime","Keine","Kekse","Kelch","Kelle","kenne","Kerbe","Kerne","Keule","Kinos","Kilos","Kiosk","Kippe","Klage","klagt","klebt","Kleid","Klick","klopf","Klops","Klotz","Knall","Knast","Knauf","Knick","Kniff","Knopf","Knorr","Knote","Kohle","Komma","Krach","Krake","Kranz","krass","Kratz","Kraul","Kreis","Kropf","krumm","Kunde","Kunst","Kuppe","Kurve","Kurze","Kutte", "Lache","Lachs","lacht","Laden","ladet","Lagen","Lager","Lagos","Laien","Laken","Lamas","Lampe","Lanze","Laser","Lasso","Lasst","Laube","Lauch","Lauer","lauft","Lauge","Leben","Leber","lebst","lebte","Leere","legal","legen","Lehre","lehrt","Leihe","leise","lenke","lenkt","lerne","lernt","Lesen","Leser","Letze","Leute","Linse","Linux","Lippe","Liter","Liste","Lobby","lobte","Logik","Login","lohnt","Lunte","Macht","Macke","Mache","Makro","Mafia","Magen","mager","magst","mahlt","mahnt","Mails","Mainz","Major","Makel","malen","Maler","Mampf","Mango","Mappe","Marge","Masse","Mathe","Matte","Meile","Meine","meins","meint","Meise","meist","Menge","mengt","merke","merkt","Messe","messt","Meter","Metro","Meute"];
+const wordlist = ["Akkus", "Aktie", "Album", "Ahorn", "Alarm", "Alpen", "Apell", "Asche", "Asien", "Athen", "Atmen", "atmet", "Audit", "Audio", "Augen", "Autor", "Autos", "Azubi", "Baden", "Bauer", "banal", "Bambi", "Basel", "Bauch", "bauen", "Bayer", "Beere", "Beine", "Beleg", "Berge", "Besen", "Beule", "Bevor", "Bezug", "Biber", "Bibel", "Biege", "Biene", "Bingo", "Birma", "Bison", "Bleib", "Blech", "Blick", "Blitz", "Block", "Blond", "Bohne", "bohrt", "Bombe", "Brand", "Braue", "Braun", "Bravo", "breit", "Brett", "Brief", "Brise", "Brite", "Brote", "Bruch", "Buche", "Bucht", "Budda", "Buhne", "Bytes", "Cargo", "Chips", "China", "Chile", "Chili", "Chrom", "circa", "Dabei", "Dachs", "Daher", "dahin", "Damit", "Danke", "Daten", "Datum", "Dauer", "Davon", "Davor", "Decke", "Degen", "Deich", "deine", "Demut", "Depot", "denke", "Dicht", "Diebe", "dient", "Diese", "Dings", "Dirne", "Disko", "Dreck", "Duden", "Duell", "Durch", "Durst", "Ebene", "Echse", "Eckel", "eckig", "eckig", "Eifel", "Eifer", "Eigen", "Einst", "Elche", "Email", "Enkel", "Enten", "Essen", "Essig", "Ester", "Etage", "Etwas", "Event", "Exten", "Extra", "Faden", "Fahne", "Fahrt", "Falke", "Falle", "Falls", "Faser", "Fauna", "Faxen", "Fazit", "Feger", "fegen", "Feige", "Feier", "fehlt", "Feind", "Felle", "Feuer", "Fiber", "Figur", "Filme", "Final", "Flach", "Floss", "Fluch", "Fokus", "Funke", "Galle", "Gebot", "Gebet", "Gehen", "Gegen", "gehst", "Geige", "Geier", "Genau", "Genom", "Genre", "genug", "Glanz", "glatt", "Gramm", "Gyros", "Haare", "Hacke", "Hafen", "Hafer", "Hagel", "Hallo", "Hasen", "Hatte", "Hauch", "Haube", "hauen", "Haupt", "Hebel", "heben", "Hecke", "Hecht", "hebst", "hefig", "hefte", "heilt", "Henne", "Heute", "Hexer", "Hexen", "Hilfe", "Hirse", "Hirte", "Hobby", "Hobel", "Honig", "Hotel", "Hunde", "hupen", "Ibiza", "Ikone", "Imker", "Immer", "Index", "Infos", "innen", "Insel", "Intel", "Ionen", "Irren", "Jacke", "Jagen", "jagte", "Jahre", "Jeder", "Jetzt", "Jubel", "juckt", "Juror", "Kamel", "Kanne", "Kante", "Kappe", "Kater", "Katze", "kauen", "kauft", "Kebab", "Kegel", "Kehle", "Keile", "Keime", "Keine", "Kekse", "Kelch", "Kelle", "kenne", "Kerbe", "Kerne", "Keule", "Kinos", "Kilos", "Kiosk", "Kippe", "Klage", "klagt", "klebt", "Kleid", "Klick", "klopf", "Klops", "Klotz", "Knall", "Knast", "Knauf", "Knick", "Kniff", "Knopf", "Knorr", "Knote", "Kohle", "Komma", "Krach", "Krake", "Kranz", "krass", "Kratz", "Kraul", "Kreis", "Kropf", "krumm", "Kunde", "Kunst", "Kuppe", "Kurve", "Kurze", "Kutte", "Lache", "Lachs", "lacht", "Laden", "ladet", "Lagen", "Lager", "Lagos", "Laien", "Laken", "Lamas", "Lampe", "Lanze", "Laser", "Lasso", "Lasst", "Laube", "Lauch", "Lauer", "lauft", "Lauge", "Leben", "Leber", "lebst", "lebte", "Leere", "legal", "legen", "Lehre", "lehrt", "Leihe", "leise", "lenke", "lenkt", "lerne", "lernt", "Lesen", "Leser", "Letze", "Leute", "Linse", "Linux", "Lippe", "Liter", "Liste", "Lobby", "lobte", "Logik", "Login", "lohnt", "Lunte", "Macht", "Macke", "Mache", "Makro", "Mafia", "Magen", "mager", "magst", "mahlt", "mahnt", "Mails", "Mainz", "Major", "Makel", "malen", "Maler", "Mampf", "Mango", "Mappe", "Marge", "Masse", "Mathe", "Matte", "Meile", "Meine", "meins", "meint", "Meise", "meist", "Menge", "mengt", "merke", "merkt", "Messe", "messt", "Meter", "Metro", "Meute"];
 
 window.onload = init();
 
@@ -43,10 +43,10 @@ function init() {
 }
 
 function checkServiceWorker() {
-    if("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/wordle/serviceWorker.js", { scope: "/wordle/"})
-        .then(()=>  console.log('ServiceWorker geladen'))
-        .catch((error) => console.warn(error))
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/wordle/serviceWorker.js", { scope: "/wordle/" })
+            .then(() => console.log('ServiceWorker geladen'))
+            .catch((error) => console.warn(error))
     }
 }
 
@@ -64,6 +64,7 @@ function countWordList() {
 
 // Buchstaben eingeben
 function logButton(clicked_ID) {
+    console.log(clicked_ID);
     const btn = document.getElementById(clicked_ID);
     const chr = btn.innerText;
     if (chr === 'del') {
@@ -172,11 +173,9 @@ function checkLetters() {
     for (let i = 0; i <= 4; i++) {
         if (searchedWord.includes(currentWord[i])) {
             if (stillGreen.includes(idLogger[i])) {
-                console.log('Bereits grün');
                 document.getElementById(tileLogger[i]).style.backgroundColor = 'orange';
                 document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
             } else {
-                console.log('vorhanden aber woanders');
                 // Buchstaben orange färben
                 document.getElementById(idLogger[i]).style.backgroundColor =
                     'orange';
@@ -185,7 +184,7 @@ function checkLetters() {
                 document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
             }
         } else {
-            console.log('Buchstabe nicht vorhanden');
+            // Buchstabe nicht vorhanden
             document.getElementById(idLogger[i]).style.backgroundColor = 'grey';
             document.getElementById(tileLogger[i]).style.backgroundColor = 'grey';
             document.getElementById(tileLogger[i]).style.border = '1.5px solid black';
@@ -222,15 +221,15 @@ continueButton.addEventListener("click", () => {
 });
 
 function showAnimation() {
-    for(let i = 0; i < lastPoints; i++) {
+    for (let i = 0; i < lastPoints; i++) {
         setInterval(() => {
             let coin = document.createElement('div');
             coin.classList.add('pointanimation')
             const rnd_Offset = Math.random() * 5 + 1
             coin.style.right = `${(80 + rnd_Offset)}%`
             coin.classList.add('active')
-            body.appendChild(coin) 
-        }, 300);        
+            body.appendChild(coin)
+        }, 300);
     }
 }
 
@@ -263,7 +262,7 @@ function load_from_LocalStorage() {
     if (localStorage.getItem('stored_CreditObj') !== null) {
         creditObj = JSON.parse(localStorage.getItem('stored_CreditObj'));
         renderCredits();
-    }else {
+    } else {
         renderCredits();
     }
 }
@@ -314,10 +313,10 @@ jokerLetter.addEventListener("click", () => {
                     currentWord = currentWord += coveredLetter;
                     // Buchstaben färben
                     let coveredLetterButtonId = '';
-                    for(let j = 0; j <= 26; j++) {
+                    for (let j = 0; j <= 26; j++) {
                         const currentButton = document.getElementById(`btn_${j}`);
                         const currentButtonLetter = currentButton.innerHTML;
-                        if(currentButtonLetter === coveredLetter) {
+                        if (currentButtonLetter === coveredLetter) {
                             currentButton.style.backgroundColor = 'green';
                             break;
                         }
@@ -328,14 +327,14 @@ jokerLetter.addEventListener("click", () => {
                 }
             }
         }
-    }else {
+    } else {
         alert("Mindestens 2 $ erforderlich!");
     }
 });
 
 
 
-jokerValids.addEventListener("click", ()=>{
+jokerValids.addEventListener("click", () => {
     if (creditObj.credits >= 6) {
         const confirm = window.confirm("Nur noch die gültigen für 6 $ anzeigen?");
         if (confirm) {
@@ -348,15 +347,191 @@ jokerValids.addEventListener("click", ()=>{
                 const currentButton = document.getElementById(`btn_${i}`);
                 const currentButtonLetter = currentButton.innerHTML;
                 // Wenn Buttonbezeichnung im gesuchten Wort?
-                if(searchedWord.includes(currentButtonLetter)) {
+                if (searchedWord.includes(currentButtonLetter)) {
 
-                }else {
+                } else {
                     // Wenn nein, Button grau färben
                     currentButton.style.backgroundColor = 'grey';
                 }
             }
         }
-    }else {
+    } else {
         alert("Mindestens 6 $ erforderlich!");
     }
 })
+
+addEventListener("keydown", (event) => {
+    checkPressedKey(event.key)
+    console.log(event.key);
+});
+
+function checkPressedKey(key) {
+    switch (key) {
+        case 'a':
+            logButton('btn_0')
+            break;
+        case 'A':
+            logButton('btn_0')
+            break;
+        case 'b':
+            logButton('btn_1')
+            break;
+        case 'B':
+            logButton('btn_1')
+            break;
+        case 'c':
+            logButton('btn_2')
+            break;
+        case 'C':
+            logButton('btn_2')
+            break;
+        case 'd':
+            logButton('btn_3')
+            break;
+        case 'D':
+            logButton('btn_3')
+            break;
+        case 'e':
+            logButton('btn_4')
+            break;
+        case 'E':
+            logButton('btn_4')
+            break;
+        case 'f':
+            logButton('btn_5')
+            break;
+        case 'F':
+            logButton('btn_5')
+            break;
+        case 'g':
+            logButton('btn_6')
+            break;
+        case 'G':
+            logButton('btn_6')
+            break;
+        case 'h':
+            logButton('btn_7')
+            break;
+        case 'H':
+            logButton('btn_7')
+            break;
+        case 'i':
+            logButton('btn_8')
+            break;
+        case 'I':
+            logButton('btn_8')
+            break;
+        case 'j':
+            logButton('btn_9')
+            break;
+        case 'J':
+            logButton('btn_9')
+            break;
+        case 'k':
+            logButton('btn_10')
+            break;
+        case 'K':
+            logButton('btn_10')
+            break;
+        case 'l':
+            logButton('btn_11')
+            break;
+        case 'L':
+            logButton('btn_11')
+            break;
+        case 'm':
+            logButton('btn_12')
+            break;
+        case 'M':
+            logButton('btn_12')
+            break;
+        case 'n':
+            logButton('btn_13')
+            break;
+        case 'N':
+            logButton('btn_13')
+            break;
+        case 'o':
+            logButton('btn_14')
+            break;
+        case 'O':
+            logButton('btn_14')
+            break;
+        case 'p':
+            logButton('btn_15')
+            break;
+        case 'P':
+            logButton('btn_15')
+            break;
+        case 'q':
+            logButton('btn_16')
+            break;
+        case 'Q':
+            logButton('btn_16')
+            break;
+        case 'r':
+            logButton('btn_17')
+            break;
+        case 'R':
+            logButton('btn_17')
+            break;
+        case 's':
+            logButton('btn_18')
+            break;
+        case 'S':
+            logButton('btn_18')
+            break;
+        case 't':
+            logButton('btn_19')
+            break;
+        case 'T':
+            logButton('btn_19')
+            break;
+        case 'u':
+            logButton('btn_20')
+            break;
+        case 'U':
+            logButton('btn_20')
+            break;
+        case 'v':
+            logButton('btn_21')
+            break;
+        case 'V':
+            logButton('btn_21')
+            break;
+        case 'w':
+            logButton('btn_22')
+            break;
+        case 'W':
+            logButton('btn_22')
+            break;
+        case 'x':
+            logButton('btn_23')
+            break;
+        case 'X':
+            logButton('btn_23')
+            break;
+        case 'y':
+            logButton('btn_24')
+            break;
+        case 'Y':
+            logButton('btn_24')
+            break;
+        case 'z':
+            logButton('btn_25')
+            break;
+        case 'Z':
+            logButton('btn_25')
+            break;
+
+        case 'Backspace':
+            logButton('btn_26')
+            break;
+
+
+
+
+        default:
+            break;
+    }
+}
