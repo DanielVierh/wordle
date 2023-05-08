@@ -64,7 +64,6 @@ function countWordList() {
 
 // Buchstaben eingeben
 function logButton(clicked_ID) {
-    console.log(clicked_ID);
     const btn = document.getElementById(clicked_ID);
     const chr = btn.innerText;
     if (chr === 'del') {
@@ -137,35 +136,38 @@ function checkWordLength() {
 
 // Checke Wort
 checkbutton.addEventListener('click', () => {
-    // Prüfe, ob Wort in Words Array existiert
-    let wordExists = false;
-    for (let i = 0; i < words.length; i++) {
-        const comparedWord = words[i].toUpperCase();
-        if (comparedWord === currentWord) {
-            wordExists = true;
-            if (searchedWord.toUpperCase() === currentWord) {
-                setTimeout(() => {
-                    gameMessage('win', 'green');
-                    document.getElementById("modalWindow").classList.add("active");
-                }, 1000);
-            } else {
-                if (checkedWords === 5) {
+    click_Check_Button()
+});
+
+function click_Check_Button() {
+        // Prüfe, ob Wort in Words Array existiert
+        let wordExists = false;
+        for (let i = 0; i < words.length; i++) {
+            const comparedWord = words[i].toUpperCase();
+            if (comparedWord === currentWord) {
+                wordExists = true;
+                if (searchedWord.toUpperCase() === currentWord) {
                     setTimeout(() => {
-                        gameMessage('loose', 'red');
+                        gameMessage('win', 'green');
                         document.getElementById("modalWindow").classList.add("active");
-                    }, 2000);
+                    }, 1000);
+                } else {
+                    if (checkedWords === 5) {
+                        setTimeout(() => {
+                            gameMessage('loose', 'red');
+                            document.getElementById("modalWindow").classList.add("active");
+                        }, 2000);
+                    }
                 }
             }
         }
-    }
-
-    if (wordExists === true) {
-        checkLetters();
-    } else {
-        alert('Das Wort wurde nicht gefunden');
-    }
-});
-
+    
+        if (wordExists === true) {
+            checkLetters();
+        } else {
+            alert('Das Wort wurde nicht gefunden');
+        }
+}
 
 
 function checkLetters() {
@@ -362,7 +364,6 @@ jokerValids.addEventListener("click", () => {
 
 addEventListener("keydown", (event) => {
     checkPressedKey(event.key)
-    console.log(event.key);
 });
 
 function checkPressedKey(key) {
@@ -523,7 +524,9 @@ function checkPressedKey(key) {
         case 'Z':
             logButton('btn_25')
             break;
-
+        case 'Enter':
+            click_Check_Button()
+            break;
         case 'Backspace':
             logButton('btn_26')
             break;
