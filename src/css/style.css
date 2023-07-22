@@ -33,6 +33,16 @@ body {
     transition: all 1.5s ease;
 }
 
+@media (min-width: 1400px) {
+    
+    .usededChars {
+        width: 80px;
+        height: 80px;
+        font-size: 3em;
+        margin: 8px 12px;
+    }
+}
+
 @media (max-width: 389px) {
     
     .usededChars {
@@ -97,6 +107,19 @@ body {
 
     100% {
         box-shadow: 0 0 30px black;
+    }
+}
+
+@media (min-width: 1400px) {  
+    .keyboardholder {
+        bottom: 30px;
+    }
+      
+    .key {
+        width: 50px;
+        height: 55px;
+        font-size: 2em;
+        margin: 4px;
     }
 }
 
