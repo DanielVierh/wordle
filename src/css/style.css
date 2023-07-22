@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -30,6 +31,25 @@ body {
     font-weight: bold;
     color: white;
     transition: all 1.5s ease;
+}
+
+@media (max-width: 389px) {
+    
+    .usededChars {
+        width: 30px;
+        height: 30px;
+        font-size: 1.4em;
+        margin: 3px 6px;
+    }
+}
+
+@media (max-width: 320px) {
+    .usededChars {
+        margin: 2px 6px;
+        width: 25px;
+        height: 25px;
+        font-size: 1.2em;
+    }
 }
 
 
@@ -77,6 +97,24 @@ body {
 
     100% {
         box-shadow: 0 0 30px black;
+    }
+}
+
+@media (max-width: 389px) {
+    .keyboardholder {
+        bottom: 30px;
+    }
+    
+    .key {
+        width: 30px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 280px) {
+    .key {
+        width: 25px;
+        height: 30px;
     }
 }
 
@@ -249,3 +287,9 @@ body {
     }
 }
 
+/* #innerWidth {
+    position: fixed;
+    top: 50px;
+    color: white; 
+    font-size: 5em;
+} */
