@@ -23,6 +23,7 @@ let creditObj = {
 
 // const innerWidthLabel = document.getElementById("innerWidth");
 // innerWidthLabel.innerHTML = window.innerWidth;
+// Test
 
 const checkbutton = document.getElementById('btnSend');
 const continueButton = document.getElementById("btnCont");
